@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/candidate/candidate",
+    "pages/schedule/schedule",
+    "pages/qrcode/qrcode",
+    "pages/staff/staff",
+    "pages/scan/scan",
+    "pages/board/board"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#007AFF",
+    "navigationBarTitleText": "UAV考点管理",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/schedule/schedule",
+        "text": "我的日程",
+        "iconPath": "images/schedule.png",
+        "selectedIconPath": "images/schedule-active.png"
+      },
+      {
+        "pagePath": "pages/qrcode/qrcode",
+        "text": "我的二维码",
+        "iconPath": "images/qrcode.png",
+        "selectedIconPath": "images/qrcode-active.png"
+      },
+      {
+        "pagePath": "pages/board/board",
+        "text": "考场看板",
+        "iconPath": "images/board.png",
+        "selectedIconPath": "images/board-active.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "扫描考生二维码需要使用摄像头"
+    }
+  }
+}
