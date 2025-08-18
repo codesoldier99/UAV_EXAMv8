@@ -1,0 +1,99 @@
+<!--小程序首页模板-->
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info">
+      <image 
+        class="avatar" 
+        src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"
+        mode="aspectFill"
+      ></image>
+      <view class="user-details">
+        <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
+        <text class="welcome">欢迎使用UAV考点运营管理系统</text>
+      </view>
+    </view>
+    
+    <view wx:if="{{!hasUserInfo}}" class="login-btn" bindtap="getUserProfile">
+      <text>登录</text>
+    </view>
+  </view>
+
+  <!-- 系统统计 -->
+  <view class="stats-section">
+    <text class="section-title">系统概览</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{systemStats.totalVenues}}</text>
+        <text class="stat-label">考场总数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value active">{{systemStats.activeVenues}}</text>
+        <text class="stat-label">活跃考场</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{systemStats.todayCheckins}}</text>
+        <text class="stat-label">今日签到</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value waiting">{{systemStats.waitingCount}}</text>
+        <text class="stat-label">等待人数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快速操作 -->
+  <view class="quick-actions">
+    <text class="section-title">快速操作</text>
+    <view class="actions-grid">
+      <view 
+        wx:for="{{quickActions}}" 
+        wx:key="id"
+        class="action-item"
+        data-action="{{item.id}}"
+        bindtap="onQuickActionTap"
+      >
+        <view class="action-icon" style="background-color: {{item.color}}">
+          <text class="icon-text">{{item.name.charAt(0)}}</text>
+        </view>
+        <text class="action-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 系统公告 -->
+  <view class="announcements" wx:if="{{announcements.length > 0}}">
+    <text class="section-title">系统公告</text>
+    <view class="announcement-list">
+      <view 
+        wx:for="{{announcements}}" 
+        wx:key="id"
+        class="announcement-item"
+        data-id="{{item.id}}"
+        bindtap="viewAnnouncement"
+      >
+        <view class="announcement-header">
+          <text class="announcement-title">{{item.title}}</text>
+          <text 
+            class="announcement-type"
+            wx:if="{{item.type === 'warning'}}"
+          >重要</text>
+        </view>
+        <text class="announcement-content">{{item.content}}</text>
+        <text class="announcement-time">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部导航提示 -->
+  <view class="bottom-tips">
+    <text class="tip-text">点击底部导航栏快速访问各功能模块</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-content">
+      <text>加载中...</text>
+    </view>
+  </view>
+</view>

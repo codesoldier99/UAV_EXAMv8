@@ -1,20 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
-    "pages/candidate/candidate",
-    "pages/schedule/schedule",
-    "pages/qrcode/qrcode",
-    "pages/staff/staff",
-    "pages/scan/scan",
-    "pages/board/board"
+    "pages/venues/venues",
+    "pages/checkin/checkin",
+    "pages/profile/profile"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#F8F9FA",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#007AFF",
-    "navigationBarTitleText": "UAV考点管理",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#1890FF",
+    "navigationBarTitleText": "UAV考点运营管理",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#7A7E83",
@@ -29,22 +26,22 @@
         "selectedIconPath": "images/home-active.png"
       },
       {
-        "pagePath": "pages/schedule/schedule",
-        "text": "我的日程",
-        "iconPath": "images/schedule.png",
-        "selectedIconPath": "images/schedule-active.png"
+        "pagePath": "pages/venues/venues",
+        "text": "考场状态",
+        "iconPath": "images/venue.png",
+        "selectedIconPath": "images/venue-active.png"
       },
       {
-        "pagePath": "pages/qrcode/qrcode",
-        "text": "我的二维码",
-        "iconPath": "images/qrcode.png",
-        "selectedIconPath": "images/qrcode-active.png"
+        "pagePath": "pages/checkin/checkin",
+        "text": "扫码签到",
+        "iconPath": "images/checkin.png",
+        "selectedIconPath": "images/checkin-active.png"
       },
       {
-        "pagePath": "pages/board/board",
-        "text": "考场看板",
-        "iconPath": "images/board.png",
-        "selectedIconPath": "images/board-active.png"
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile-active.png"
       }
     ]
   },
@@ -54,7 +51,13 @@
   },
   "permission": {
     "scope.camera": {
-      "desc": "扫描考生二维码需要使用摄像头"
+      "desc": "扫描考场二维码需要使用摄像头"
+    },
+    "scope.userLocation": {
+      "desc": "获取位置信息用于签到验证"
     }
-  }
+  },
+  "requiredBackgroundModes": ["location"],
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }
