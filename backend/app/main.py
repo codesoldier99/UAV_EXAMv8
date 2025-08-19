@@ -11,10 +11,11 @@ from .config.database import engine, Base
 from .routes import (
     auth_router,
     institutions_router,
-    # venues_router,
-    # exams_router,
-    # checkins_router,
-    # admin_router
+    exam_products_router,
+    candidates_router,
+    wechat_router,
+    venues_router,
+    schedules_router
 )
 
 
@@ -74,10 +75,11 @@ app.add_middleware(
 # 注册路由
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(institutions_router, prefix="/api/v1")
-# app.include_router(venues_router, prefix="/api/v1")
-# app.include_router(exams_router, prefix="/api/v1")
-# app.include_router(checkins_router, prefix="/api/v1")
-# app.include_router(admin_router, prefix="/api/v1")
+app.include_router(exam_products_router, prefix="/api/v1")
+app.include_router(candidates_router, prefix="/api/v1")
+app.include_router(wechat_router, prefix="/api/v1")
+app.include_router(venues_router, prefix="/api/v1")
+app.include_router(schedules_router, prefix="/api/v1")
 
 
 # 系统基础端点

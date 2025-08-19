@@ -29,6 +29,44 @@ class RegistrationStatus(enum.Enum):
     CANCELLED = "cancelled"      # 已取消
 
 
+class ScheduleStatus(enum.Enum):
+    """日程状态枚举"""
+    PENDING = "pending"          # 待进行
+    IN_PROGRESS = "in_progress"  # 进行中
+    COMPLETED = "completed"      # 已完成
+    CANCELLED = "cancelled"      # 已取消
+
+
+class ExamProduct(Base):
+    """考试产品模型"""
+    __tablename__ = "exam_products"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # 基本信息
+    name = Column(String(200), nullable=False, unique=True, index=True)
+    code = Column(String(50), unique=True, nullable=False, index=True)
+    description = Column(Text)
+    
+    # 考试配置
+    duration_minutes = Column(Integer, nullable=False)  # 考试时长（分钟）
+    exam_type = Column(String(50), nullable=False)  # 理论/实操
+    
+    # 状态
+    is_active = Column(Boolean, default=True)
+    
+    # 时间戳
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+    
+    # 反向关系
+    exam_registrations = relationship("ExamRegistration", back_populates="exam_product")
+    schedules = relationship("Schedule", back_populates="exam_product")
+    
+    def __repr__(self):
+        return f"<ExamProduct {self.name}>"
+
+
 class Exam(Base):
     """考试模型"""
     __tablename__ = "exams"
@@ -125,12 +163,12 @@ class ExamRegistration(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     
-    # 关联用户和考试
+    # 关联用户和考试产品
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("User", back_populates="exam_registrations")
     
-    exam_id = Column(Integer, ForeignKey("exams.id"), nullable=False)
-    exam = relationship("Exam", back_populates="registrations")
+    exam_product_id = Column(Integer, ForeignKey("exam_products.id"), nullable=False)
+    exam_product = relationship("ExamProduct", back_populates="exam_registrations")
     
     exam_session_id = Column(Integer, ForeignKey("exam_sessions.id"))
     exam_session = relationship("ExamSession", back_populates="registrations")
@@ -152,6 +190,45 @@ class ExamRegistration(Base):
     
     # 反向关系
     checkins = relationship("CheckIn", back_populates="registration")
+    schedules = relationship("Schedule", back_populates="registration")
     
     def __repr__(self):
         return f"<ExamRegistration {self.registration_number}>"
+
+
+class Schedule(Base):
+    """日程安排模型"""
+    __tablename__ = "schedules"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # 关联报名和考试产品
+    registration_id = Column(Integer, ForeignKey("exam_registrations.id"), nullable=False)
+    registration = relationship("ExamRegistration", back_populates="schedules")
+    
+    exam_product_id = Column(Integer, ForeignKey("exam_products.id"), nullable=False)
+    exam_product = relationship("ExamProduct", back_populates="schedules")
+    
+    venue_id = Column(Integer, ForeignKey("venues.id"), nullable=False)
+    venue = relationship("Venue", back_populates="schedules")
+    
+    # 日程信息
+    schedule_date = Column(DateTime, nullable=False)  # 安排日期
+    start_time = Column(DateTime, nullable=False)     # 开始时间
+    end_time = Column(DateTime, nullable=False)       # 结束时间
+    
+    # 状态
+    status = Column(Enum(ScheduleStatus), default=ScheduleStatus.PENDING)
+    
+    # 排序信息
+    queue_position = Column(Integer, default=0)  # 排队位置
+    
+    # 时间戳
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+    
+    # 反向关系
+    checkins = relationship("CheckIn", back_populates="schedule")
+    
+    def __repr__(self):
+        return f"<Schedule {self.id}>"

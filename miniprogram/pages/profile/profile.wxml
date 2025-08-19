@@ -1,0 +1,94 @@
+<!--个人中心页面-->
+<view class="container">
+  <!-- 未登录状态 -->
+  <view class="login-section" wx:if="{{!isLoggedIn}}">
+    <view class="login-card">
+      <view class="login-icon">👤</view>
+      <text class="login-title">UAV考点管理系统</text>
+      <text class="login-desc">请使用身份证号登录</text>
+      <button class="login-btn" bindtap="onWeChatLogin">身份证登录</button>
+    </view>
+  </view>
+
+  <!-- 已登录状态 -->
+  <view class="profile-section" wx:if="{{isLoggedIn}}">
+    <!-- 用户信息 -->
+    <view class="user-card">
+      <view class="user-avatar">{{userInfo.real_name ? userInfo.real_name.charAt(0) : '用'}}</view>
+      <view class="user-info">
+        <text class="user-name">{{userInfo.real_name || userInfo.username}}</text>
+        <text class="user-role">{{userInfo.role === 'candidate' ? '考生' : '考务人员'}}</text>
+      </view>
+      <button class="refresh-btn" bindtap="onRefresh" size="mini">刷新</button>
+    </view>
+
+    <!-- 考生功能 -->
+    <view class="candidate-section" wx:if="{{userInfo.role === 'candidate'}}">
+      <!-- 二维码卡片 -->
+      <view class="qr-card">
+        <view class="qr-header">
+          <text class="qr-title">我的二维码</text>
+          <text class="qr-desc">向考务人员出示此码进行签到</text>
+        </view>
+        <button class="qr-btn" bindtap="showMyQRCode">显示二维码</button>
+      </view>
+
+      <!-- 排队状态 -->
+      <view class="queue-card" wx:if="{{queuePosition}}">
+        <view class="queue-header">
+          <text class="queue-title">排队状态</text>
+        </view>
+        <view class="queue-info">
+          <text class="venue-name">{{queuePosition.venue_name}}</text>
+          <text class="position">第 {{queuePosition.position}} 位</text>
+          <text class="waiting">共 {{queuePosition.total_waiting}} 人等待</text>
+          <text class="estimate" wx:if="{{queuePosition.estimated_wait_time}}">
+            预计等待 {{queuePosition.estimated_wait_time}} 分钟
+          </text>
+        </view>
+      </view>
+
+      <!-- 我的日程 -->
+      <view class="schedule-card" wx:if="{{schedules.length > 0}}">
+        <view class="schedule-header">
+          <text class="schedule-title">我的日程</text>
+        </view>
+        <view class="schedule-list">
+          <block wx:for="{{schedules}}" wx:key="id">
+            <view class="schedule-item" bindtap="onScheduleDetail" data-schedule="{{item}}">
+              <view class="schedule-info">
+                <text class="exam-name">{{item.exam_product_name}}</text>
+                <text class="venue-info">{{item.venue_name}} · {{item.exam_type}}</text>
+                <text class="time-info">{{item.start_time}}</text>
+              </view>
+              <view class="schedule-status">
+                <text class="status-text status-{{item.status}}">
+                  {{item.status === 'pending' ? '待进行' : item.status === 'in_progress' ? '进行中' : '已完成'}}
+                </text>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!-- 退出登录 -->
+    <view class="logout-section">
+      <button class="logout-btn" bindtap="logout">退出登录</button>
+    </view>
+  </view>
+
+  <!-- 二维码弹窗 -->
+  <view class="qr-modal" wx:if="{{showQRCode}}">
+    <view class="qr-modal-content">
+      <view class="qr-modal-header">
+        <text class="qr-modal-title">我的签到码</text>
+        <button class="qr-close-btn" bindtap="closeQRCode">×</button>
+      </view>
+      <view class="qr-code-container">
+        <image class="qr-code-image" src="{{qrCodeData}}" mode="aspectFit"></image>
+      </view>
+      <text class="qr-modal-tip">请向考务人员出示此二维码</text>
+    </view>
+  </view>
+</view>

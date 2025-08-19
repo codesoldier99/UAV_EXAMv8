@@ -45,6 +45,9 @@ class CheckIn(Base):
     registration_id = Column(Integer, ForeignKey("exam_registrations.id"), nullable=False)
     registration = relationship("ExamRegistration", back_populates="checkins")
     
+    schedule_id = Column(Integer, ForeignKey("schedules.id"), nullable=False)
+    schedule = relationship("Schedule", back_populates="checkins")
+    
     # 签到信息
     checkin_time = Column(DateTime, nullable=False, server_default=func.now())
     method = Column(Enum(CheckInMethod), default=CheckInMethod.QR_CODE)

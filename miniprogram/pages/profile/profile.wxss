@@ -1,0 +1,369 @@
+/* 个人中心页面样式 */
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 登录部分 */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.login-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 80rpx 60rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
+  width: 80%;
+}
+
+.login-icon {
+  font-size: 120rpx;
+  margin-bottom: 40rpx;
+}
+
+.login-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.login-desc {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 60rpx;
+  line-height: 1.5;
+}
+
+.login-btn {
+  background: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 25rpx 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* 用户信息 */
+.user-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #1890ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-right: 30rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.user-role {
+  font-size: 24rpx;
+  color: #1890ff;
+  background: #e6f7ff;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.refresh-btn {
+  background: #f0f0f0;
+  color: #666;
+  border: none;
+  border-radius: 20rpx;
+}
+
+/* 二维码卡片 */
+.qr-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.qr-header {
+  margin-bottom: 30rpx;
+}
+
+.qr-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.qr-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.qr-btn {
+  background: #52c41a;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx;
+  font-size: 30rpx;
+  width: 100%;
+}
+
+/* 排队状态 */
+.queue-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.queue-header {
+  margin-bottom: 20rpx;
+}
+
+.queue-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.queue-info {
+  text-align: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.venue-name {
+  font-size: 28rpx;
+  color: #333;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.position {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #1890ff;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.waiting {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.estimate {
+  font-size: 24rpx;
+  color: #52c41a;
+}
+
+/* 日程列表 */
+.schedule-card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.schedule-header {
+  border-bottom: 1rpx solid #f0f0f0;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.schedule-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #fafafa;
+  border-radius: 12rpx;
+  transition: background-color 0.2s;
+}
+
+.schedule-item:active {
+  background: #f0f0f0;
+}
+
+.schedule-info {
+  flex: 1;
+}
+
+.exam-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.venue-info {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.time-info {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.schedule-status {
+  text-align: right;
+}
+
+.status-text {
+  padding: 6rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.status-pending {
+  background: #fff7e6;
+  color: #fa8c16;
+}
+
+.status-in_progress {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-completed {
+  background: #f6ffed;
+  color: #52c41a;
+}
+
+/* 退出登录 */
+.logout-section {
+  margin-top: 40rpx;
+}
+
+.logout-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  width: 100%;
+}
+
+/* 二维码弹窗 */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.qr-modal-content {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin: 40rpx;
+  max-width: 600rpx;
+  width: 100%;
+}
+
+.qr-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.qr-modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.qr-close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #666;
+  border: none;
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.qr-code-image {
+  width: 400rpx;
+  height: 400rpx;
+  border: 2rpx solid #f0f0f0;
+  border-radius: 12rpx;
+}
+
+.qr-modal-tip {
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}

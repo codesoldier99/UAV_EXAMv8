@@ -5,13 +5,13 @@
 from .user import User, UserRole
 from .institution import Institution
 from .venue import Venue, VenueStatus
-from .exam import Exam, ExamSession, ExamRegistration
+from .exam import Exam, ExamSession, ExamRegistration, ExamProduct, Schedule, ScheduleStatus
 from .checkin import CheckIn
 
 __all__ = [
     "User", "UserRole",
     "Institution",
     "Venue", "VenueStatus",
-    "Exam", "ExamSession", "ExamRegistration",
+    "Exam", "ExamSession", "ExamRegistration", "ExamProduct", "Schedule", "ScheduleStatus",
     "CheckIn"
 ]

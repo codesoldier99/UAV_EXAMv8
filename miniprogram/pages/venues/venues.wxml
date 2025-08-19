@@ -1,0 +1,80 @@
+<!--考场状态页面-->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="header">
+    <text class="title">考场实时状态</text>
+    <text class="update-time">更新时间：{{updateTime}}</text>
+  </view>
+
+  <!-- 汇总信息 -->
+  <view class="summary">
+    <view class="summary-item">
+      <text class="summary-number">{{summary.total_venues}}</text>
+      <text class="summary-label">总考场</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-number">{{summary.active_venues}}</text>
+      <text class="summary-label">可用</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-number">{{summary.total_waiting}}</text>
+      <text class="summary-label">等待人数</text>
+    </view>
+  </view>
+
+  <!-- 刷新按钮 -->
+  <view class="refresh-bar">
+    <button class="refresh-btn" bindtap="onRefresh" loading="{{refreshing}}" size="mini">
+      {{refreshing ? '刷新中...' : '手动刷新'}}
+    </button>
+  </view>
+
+  <!-- 考场列表 -->
+  <view class="venues-list">
+    <block wx:for="{{venues}}" wx:key="venue_id">
+      <view class="venue-card" bindtap="onVenueDetail" data-venue="{{item}}">
+        <!-- 考场头部 -->
+        <view class="venue-header">
+          <view class="venue-info">
+            <text class="venue-name">{{item.venue_name}}</text>
+            <text class="venue-type">{{item.venue_type}}</text>
+          </view>
+          <view class="venue-status" style="color: {{item.status_color}}">
+            <text class="status-dot" style="background-color: {{item.status_color}}"></text>
+            <text class="status-text">{{item.status_text}}</text>
+          </view>
+        </view>
+
+        <!-- 考场详情 -->
+        <view class="venue-details">
+          <view class="detail-item">
+            <text class="detail-label">容量：</text>
+            <text class="detail-value">{{item.capacity}}人</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">等待：</text>
+            <text class="detail-value">{{item.waiting_count}}人</text>
+          </view>
+          <view class="detail-item" wx:if="{{item.current_candidate}}">
+            <text class="detail-label">当前：</text>
+            <text class="detail-value">{{item.current_candidate}}</text>
+          </view>
+          <view class="detail-item" wx:if="{{item.next_start_time}}">
+            <text class="detail-label">下次：</text>
+            <text class="detail-value">{{item.next_start_time}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 加载提示 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && venues.length === 0}}">
+    <text>暂无考场数据</text>
+  </view>
+</view>

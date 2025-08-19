@@ -1,0 +1,69 @@
+<!--扫码签到页面-->
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info" wx:if="{{userInfo}}">
+    <text class="welcome">欢迎，{{userInfo.real_name || userInfo.username}}</text>
+    <text class="role">{{isExaminer ? '考务人员' : '考生'}}</text>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats" wx:if="{{isExaminer}}">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.todayCheckins}}</text>
+      <text class="stat-label">今日签到</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.successRate}}%</text>
+      <text class="stat-label">成功率</text>
+    </view>
+  </view>
+
+  <!-- 扫码区域 -->
+  <view class="scan-section">
+    <view class="scan-card" wx:if="{{isExaminer}}">
+      <view class="scan-icon">📷</view>
+      <text class="scan-title">扫码签到</text>
+      <text class="scan-desc">扫描考生手机上的二维码进行签到</text>
+      <button class="scan-btn" bindtap="startScan">开始扫码</button>
+      <button class="manual-btn" bindtap="manualCheckin" size="mini" type="default">手动签到</button>
+    </view>
+
+    <!-- 考生提示 -->
+    <view class="candidate-tip" wx:if="{{!isExaminer}}">
+      <view class="tip-icon">👤</view>
+      <text class="tip-title">考生用户</text>
+      <text class="tip-desc">请向考务人员出示您的二维码</text>
+      <button class="qr-btn" bindtap="showQRCode">显示我的二维码</button>
+    </view>
+  </view>
+
+  <!-- 最近签到记录 -->
+  <view class="recent-section" wx:if="{{isExaminer && recentCheckins.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">最近签到</text>
+    </view>
+    
+    <view class="checkin-list">
+      <block wx:for="{{recentCheckins}}" wx:key="id">
+        <view class="checkin-item" bindtap="onCheckinDetail" data-checkin="{{item}}">
+          <view class="checkin-info">
+            <text class="candidate-name">{{item.candidateName}}</text>
+            <text class="exam-product">{{item.examProduct}}</text>
+            <text class="venue-name">{{item.venue}}</text>
+          </view>
+          <view class="checkin-meta">
+            <text class="checkin-time">{{item.checkinTime}}</text>
+            <view class="status-badge success" wx:if="{{item.status === 'success'}}">
+              <text>成功</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{isExaminer && recentCheckins.length === 0}}">
+    <text>暂无签到记录</text>
+  </view>
+</view>

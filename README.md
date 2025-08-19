@@ -77,36 +77,70 @@ curl -X POST "http://localhost:8000/api/v1/auth/login" -d "username=admin&passwo
 # 获取机构列表  
 curl http://localhost:8000/api/v1/institutions
 
+# 考试产品管理
+curl http://localhost:8000/api/v1/exam-products/
+
+# 考生管理
+curl http://localhost:8000/api/v1/candidates/
+
 # 考场状态（小程序公共看板）
 curl http://localhost:8000/api/v1/public/venues-status
+
+# 微信小程序API
+curl http://localhost:8000/api/v1/wechat/venues/status
+curl http://localhost:8000/api/v1/wechat/dashboard
+```
+
+### 运行API测试
+
+```bash
+# 运行测试脚本
+python test_api.py
+```
+
+### 初始化测试数据
+
+```bash
+# 创建测试数据（包括管理员、机构、考试产品、考场、考生等）
+python init_test_data.py
 ```
 
 ## 🏗️ 核心功能
 
-### 用户角色管理
-- **超级管理员**: 系统配置、用户管理
-- **考务管理员**: 考试安排、现场监控
-- **机构用户**: 考生报名、信息查询
-- **考务人员**: 现场扫码签到
-- **考生**: 查看日程、出示二维码
+#### 用户角色管理 (RBAC)
+- **超级管理员**: 系统配置、用户管理、权限分配
+- **考务管理员**: 考试安排、现场监控、日程管理
+- **机构用户**: 考生报名、信息查询、数据隔离
+- **考务人员**: 现场扫码签到、状态更新
+- **考生**: 查看日程、出示二维码、实时状态
 
-### 考生管理
+#### 考试产品管理
+- 考试产品配置（理论/实操）
+- 考试时长设置
+- 产品状态管理
+- 批量操作支持
+
+#### 考生报名管理
 - 批量Excel导入考生信息
 - 手动单个考生录入
+- 身份证号验证
 - 按机构隔离数据访问
 - 考生状态实时追踪
 
-### 排期管理
+#### 日程排期管理
 - 智能日程编排算法
 - 按机构集中安排实操考试
 - 考场资源优化配置
+- 时间冲突检测
 - 实时排队状态显示
 
-### 移动端功能
-- 考生动态二维码身份凭证
+#### 微信小程序功能
+- 考生身份证号登录
+- 动态二维码身份凭证
 - 考务人员扫码签到
 - 实时考场状态看板
 - 个人日程查询
+- 排队位置显示
 
 ## 📱 微信小程序
 
@@ -137,6 +171,13 @@ curl http://localhost:8000/api/v1/public/venues-status
 UAV_EXAMv8/
 ├── backend/                 # FastAPI后端
 │   ├── app/                # 应用代码
+│   │   ├── config/         # 配置模块
+│   │   ├── models/         # 数据模型
+│   │   ├── routes/         # API路由
+│   │   ├── services/       # 业务服务
+│   │   ├── schemas/        # 数据模式
+│   │   ├── utils/          # 工具函数
+│   │   └── main.py         # 主程序
 │   ├── requirements.txt    # Python依赖
 │   ├── Dockerfile          # Docker镜像
 │   └── .env.example        # 环境配置示例
@@ -151,6 +192,7 @@ UAV_EXAMv8/
 ├── docker-compose.yml      # Docker编排
 ├── deploy.sh               # 部署脚本
 ├── quick_start.py          # 快速启动
+├── test_api.py             # API测试脚本
 └── README.md               # 项目文档
 ```
 
@@ -189,15 +231,24 @@ UAV_EXAMv8/
 
 ## 🎉 更新日志
 
+### v1.1.0 (2025-08-18)
+- 🚀 重大功能更新
+- ✅ 完整的考试产品管理系统
+- ✅ 考生报名管理（批量导入/手动录入）
+- ✅ 微信小程序核心功能（登录/二维码/签到）
+- ✅ 日程排期管理系统
+- ✅ 实时考场状态监控
+- ✅ 排队位置显示
+- ✅ 完整的API测试脚本
+- ✅ 数据模式验证和错误处理
+
 ### v1.0.0 (2025-08-17)
 - 🎉 初始版本发布
 - ✅ 完整的用户权限管理系统
-- ✅ 考生报名和排期管理
-- ✅ 微信小程序支持
-- ✅ 实时考场看板
+- ✅ 基础架构搭建
 - ✅ Docker容器化部署
 - ✅ 自动化部署脚本
-- ✅ 完整的API文档
+- ✅ 基础API文档
 
 ---
 

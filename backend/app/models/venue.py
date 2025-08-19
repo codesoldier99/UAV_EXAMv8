@@ -60,6 +60,7 @@ class Venue(Base):
     # 反向关系
     exam_sessions = relationship("ExamSession", back_populates="venue")
     checkins = relationship("CheckIn", back_populates="venue")
+    schedules = relationship("Schedule", back_populates="venue")
     
     def __repr__(self):
         return f"<Venue {self.name}>"

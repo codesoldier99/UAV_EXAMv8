@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "考场状态",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}
