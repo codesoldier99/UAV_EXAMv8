@@ -4,7 +4,7 @@
 const app = getApp()
 
 // API基础配置
-const API_BASE_URL = 'https://your-api-domain.com/api/v1'
+const API_BASE_URL = 'http://localhost:8000/api/v1'
 
 /**
  * 网络请求封装
@@ -197,6 +197,16 @@ module.exports = {
   delete: del,
   upload,
 
+  // 公共API（无需认证）
+  getVenuesStatus: () => get('/public/venues-status', {}, { loading: false }),
+  candidateLogin: (data) => post('/public/candidate/login', data),
+  getCandidateQRCode: (candidateId) => get(`/public/candidate/${candidateId}/qrcode`),
+  checkinCandidate: (data) => post('/public/checkin', data),
+  getTodaySchedule: () => get('/public/schedule/today'),
+  getPublicInstitutions: () => get('/public/institutions'),
+  getPublicExamProducts: () => get('/public/exam-products'),
+  healthCheck: () => get('/public/health'),
+
   // 认证相关API
   auth: {
     login: (data) => post('/auth/login', data),
@@ -207,37 +217,55 @@ module.exports = {
 
   // 考场相关API
   venues: {
-    getPublicStatus: () => get('/public/venues/status', {}, { loading: false }),
     getVenues: (params) => get('/venues', params),
     getVenue: (id) => get(`/venues/${id}`),
-    checkin: (data) => post('/venues/checkin', data)
+    createVenue: (data) => post('/venues', data),
+    updateVenue: (id, data) => put(`/venues/${id}`, data),
+    deleteVenue: (id) => del(`/venues/${id}`)
   },
 
   // 机构相关API
   institutions: {
-    getList: (params) => get('/institutions', params),
-    getDetail: (id) => get(`/institutions/${id}`),
-    getStats: (id) => get(`/institutions/${id}/stats`)
+    getInstitutions: (params) => get('/institutions', params),
+    getInstitution: (id) => get(`/institutions/${id}`),
+    createInstitution: (data) => post('/institutions', data),
+    updateInstitution: (id, data) => put(`/institutions/${id}`, data)
   },
 
-  // 考试相关API
-  exams: {
-    getList: (params) => get('/exams', params),
-    getDetail: (id) => get(`/exams/${id}`),
-    register: (data) => post('/exams/register', data)
+  // 考生相关API
+  candidates: {
+    getCandidates: (params) => get('/candidates', params),
+    getCandidate: (id) => get(`/candidates/${id}`),
+    createCandidate: (data) => post('/candidates', data),
+    updateCandidate: (id, data) => put(`/candidates/${id}`, data),
+    deleteCandidate: (id) => del(`/candidates/${id}`),
+    importCandidates: (file) => upload(file, { url: '/candidates/import', name: 'file' })
   },
 
-  // 签到相关API
-  checkin: {
-    scan: (data) => post('/checkin/scan', data),
-    getHistory: (params) => get('/checkin/history', params),
-    getStats: () => get('/checkin/stats')
+  // 考试产品相关API
+  examProducts: {
+    getExamProducts: (params) => get('/exam-products', params),
+    getExamProduct: (id) => get(`/exam-products/${id}`),
+    createExamProduct: (data) => post('/exam-products', data),
+    updateExamProduct: (id, data) => put(`/exam-products/${id}`, data)
   },
 
-  // 微信小程序专用API
-  wechat: {
-    getDashboard: () => get('/wechat/venues/dashboard', {}, { loading: false }),
-    login: (data) => post('/wechat/login', data),
-    bindUser: (data) => post('/wechat/bind', data)
+  // 日程相关API
+  schedules: {
+    getSchedules: (params) => get('/schedules', params),
+    getSchedule: (id) => get(`/schedules/${id}`),
+    createSchedule: (data) => post('/schedules', data),
+    updateSchedule: (id, data) => put(`/schedules/${id}`, data),
+    deleteSchedule: (id) => del(`/schedules/${id}`),
+    batchCreateSchedules: (data) => post('/schedules/batch', data)
+  },
+
+  // 用户相关API
+  users: {
+    getUsers: (params) => get('/users', params),
+    getUser: (id) => get(`/users/${id}`),
+    createUser: (data) => post('/users', data),
+    updateUser: (id, data) => put(`/users/${id}`, data),
+    deleteUser: (id) => del(`/users/${id}`)
   }
 }

@@ -36,17 +36,24 @@ class CheckIn(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("User", back_populates="checkins")
     
+    candidate_id = Column(Integer, ForeignKey("candidates.id"), nullable=False)
+    candidate = relationship("Candidate", back_populates="checkins")
+    
     venue_id = Column(Integer, ForeignKey("venues.id"), nullable=False)
     venue = relationship("Venue", back_populates="checkins")
     
-    exam_session_id = Column(Integer, ForeignKey("exam_sessions.id"), nullable=False)
+    exam_session_id = Column(Integer, ForeignKey("exam_sessions.id"))
     exam_session = relationship("ExamSession", back_populates="checkins")
     
-    registration_id = Column(Integer, ForeignKey("exam_registrations.id"), nullable=False)
+    registration_id = Column(Integer, ForeignKey("exam_registrations.id"))
     registration = relationship("ExamRegistration", back_populates="checkins")
     
     schedule_id = Column(Integer, ForeignKey("schedules.id"), nullable=False)
     schedule = relationship("Schedule", back_populates="checkins")
+    
+    # 签到工作人员
+    staff_id = Column(Integer, ForeignKey("users.id"))
+    staff = relationship("User", foreign_keys=[staff_id])
     
     # 签到信息
     checkin_time = Column(DateTime, nullable=False, server_default=func.now())

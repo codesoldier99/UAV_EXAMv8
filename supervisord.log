@@ -1,0 +1,6 @@
+2025-08-20 03:41:00,795 INFO RPC interface 'supervisor' initialized
+2025-08-20 03:41:00,795 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-08-20 03:41:00,797 INFO daemonizing the supervisord process
+2025-08-20 03:41:00,798 INFO supervisord started with pid 22003
+2025-08-20 03:41:01,801 INFO spawned: 'uav_api' with pid 22005
+2025-08-20 03:41:02,803 INFO success: uav_api entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

@@ -1,0 +1,107 @@
+<!--考生登录页面-->
+<view class="container">
+  
+  <!-- 登录头部 -->
+  <view class="login-header">
+    <view class="logo">🎓</view>
+    <view class="title">考生登录</view>
+    <view class="subtitle">UAV考点运营管理系统</view>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-icon">🆔</text>
+        <text class="label-text">身份证号</text>
+      </view>
+      <input 
+        class="form-input" 
+        type="idcard"
+        placeholder="请输入身份证号码"
+        maxlength="18"
+        value="{{form.id_card}}"
+        bindinput="onIdCardInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-icon">📱</text>
+        <text class="label-text">手机号码</text>
+      </view>
+      <input 
+        class="form-input" 
+        type="number"
+        placeholder="请输入手机号码"
+        maxlength="11"
+        value="{{form.phone}}"
+        bindinput="onPhoneInput"
+      />
+    </view>
+
+    <!-- 登录按钮 -->
+    <button 
+      class="login-btn {{loading ? 'loading' : ''}}" 
+      bindtap="onLogin"
+      disabled="{{loading}}"
+    >
+      {{loading ? '登录中...' : '立即登录'}}
+    </button>
+
+    <!-- 快捷操作 -->
+    <view class="quick-actions">
+      <button class="quick-btn demo" bindtap="onDemoLogin">
+        <text class="btn-icon">🎯</text>
+        <text class="btn-text">演示账号</text>
+      </button>
+      
+      <button class="quick-btn clear" bindtap="onClearForm">
+        <text class="btn-icon">🗑️</text>
+        <text class="btn-text">清空表单</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 登录说明 -->
+  <view class="login-tips">
+    <view class="tips-title">登录说明</view>
+    <view class="tips-content">
+      <view class="tip-item">
+        <text class="tip-icon">💡</text>
+        <text class="tip-text">请使用报名时的身份证号和手机号登录</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">🔒</text>
+        <text class="tip-text">系统将验证您的身份信息</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">📋</text>
+        <text class="tip-text">登录后可查看考试安排和个人信息</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部帮助 -->
+  <view class="bottom-help">
+    <button class="help-btn" bindtap="onGetHelp">
+      <text class="help-icon">❓</text>
+      <text class="help-text">登录帮助</text>
+    </button>
+    
+    <button class="help-btn" bindtap="onContactService">
+      <text class="help-icon">📞</text>
+      <text class="help-text">联系客服</text>
+    </button>
+    
+    <button class="help-btn" bindtap="onBackToHome">
+      <text class="help-icon">🏠</text>
+      <text class="help-text">返回首页</text>
+    </button>
+  </view>
+
+  <!-- 版权信息 -->
+  <view class="footer">
+    <text class="footer-text">UAV考点运营管理系统 v1.0.0</text>
+  </view>
+</view>

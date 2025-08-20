@@ -1,0 +1,11 @@
+INFO:     10.12.171.50:56518 - "GET / HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/candidates/register HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "GET /api/exam-products HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "GET /api/venues HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/schedules/create HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/public/candidate/login HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "GET /api/public/candidate/1/schedules HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "POST /api/public/checkin HTTP/1.1" 200 OK
+INFO:     10.12.171.50:56518 - "GET /api/dashboard/venue-status HTTP/1.1" 200 OK

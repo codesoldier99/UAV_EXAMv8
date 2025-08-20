@@ -62,6 +62,7 @@ class ExamProduct(Base):
     # 反向关系
     exam_registrations = relationship("ExamRegistration", back_populates="exam_product")
     schedules = relationship("Schedule", back_populates="exam_product")
+    candidates = relationship("Candidate", back_populates="exam_product")
     
     def __repr__(self):
         return f"<ExamProduct {self.name}>"

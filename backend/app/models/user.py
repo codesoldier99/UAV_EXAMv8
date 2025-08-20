@@ -31,6 +31,7 @@ class User(Base):
     
     # 基本信息
     real_name = Column(String(50))
+    full_name = Column(String(50))  # 添加全名字段以兼容RBAC
     id_card = Column(String(20))
     avatar = Column(String(255))
     
@@ -41,20 +42,35 @@ class User(Base):
     
     # 关联机构
     institution_id = Column(Integer, ForeignKey("institutions.id"))
-    institution = relationship("Institution", back_populates="users")
     
     # 微信信息
     wechat_openid = Column(String(100), unique=True, index=True)
     wechat_unionid = Column(String(100), unique=True, index=True)
     
     # 时间戳
-    created_at = Column(DateTime, server_default=func.now())
-    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
-    last_login = Column(DateTime)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    last_login = Column(DateTime(timezone=True))
     
-    # 反向关系
+    # 关系定义
+    institution = relationship("Institution", back_populates="users")
     exam_registrations = relationship("ExamRegistration", back_populates="user")
     checkins = relationship("CheckIn", back_populates="user")
     
+    # RBAC 关系
+    roles = relationship("Role", secondary="user_roles", back_populates="users")
+    
     def __repr__(self):
         return f"<User {self.username}>"
+    
+    def has_permission(self, permission_name: str) -> bool:
+        """检查用户是否有指定权限"""
+        for role in self.roles:
+            for permission in role.permissions:
+                if permission.name == permission_name:
+                    return True
+        return False
+    
+    def has_role(self, role_name: str) -> bool:
+        """检查用户是否有指定角色"""
+        return any(role.name == role_name for role in self.roles)

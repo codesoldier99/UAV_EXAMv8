@@ -1,303 +1,361 @@
 /* 个人中心页面样式 */
 .container {
   padding: 20rpx;
-  background-color: #f5f5f5;
+  background: #f5f5f5;
   min-height: 100vh;
 }
 
-/* 登录部分 */
-.login-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-}
-
-.login-card {
-  background: white;
-  border-radius: 20rpx;
-  padding: 80rpx 60rpx;
-  text-align: center;
-  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.1);
-  width: 80%;
-}
-
-.login-icon {
-  font-size: 120rpx;
-  margin-bottom: 40rpx;
-}
-
-.login-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 20rpx;
-}
-
-.login-desc {
-  font-size: 28rpx;
-  color: #666;
-  display: block;
-  margin-bottom: 60rpx;
-  line-height: 1.5;
-}
-
-.login-btn {
-  background: #1890ff;
-  color: white;
-  border: none;
-  border-radius: 50rpx;
-  padding: 25rpx 80rpx;
-  font-size: 32rpx;
-  font-weight: bold;
-}
-
-/* 用户信息 */
-.user-card {
-  background: white;
+/* 考生用户档案 */
+.profile-card {
+  background: linear-gradient(135deg, #1890ff, #40a9ff);
   border-radius: 16rpx;
-  padding: 40rpx 30rpx;
-  margin-bottom: 20rpx;
+  padding: 40rpx;
+  color: white;
+  margin-bottom: 30rpx;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
 }
 
-.user-avatar {
-  width: 100rpx;
-  height: 100rpx;
+.avatar-section {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
   border-radius: 50%;
-  background: #1890ff;
-  color: white;
+  background: rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36rpx;
+  font-size: 48rpx;
   font-weight: bold;
   margin-right: 30rpx;
 }
 
-.user-info {
-  flex: 1;
+.avatar.staff {
+  background: linear-gradient(135deg, #52c41a, #73d13d);
 }
 
 .user-name {
-  font-size: 32rpx;
+  font-size: 40rpx;
   font-weight: bold;
-  color: #333;
-  display: block;
   margin-bottom: 8rpx;
 }
 
+.user-id,
 .user-role {
   font-size: 24rpx;
-  color: #1890ff;
-  background: #e6f7ff;
-  padding: 6rpx 12rpx;
-  border-radius: 12rpx;
+  opacity: 0.9;
+  margin-bottom: 8rpx;
 }
 
-.refresh-btn {
-  background: #f0f0f0;
-  color: #666;
-  border: none;
-  border-radius: 20rpx;
-}
-
-/* 二维码卡片 */
-.qr-card {
-  background: white;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-}
-
-.qr-header {
-  margin-bottom: 30rpx;
-}
-
-.qr-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 10rpx;
-}
-
-.qr-desc {
+.user-status {
+  display: flex;
+  align-items: center;
   font-size: 24rpx;
-  color: #666;
-  line-height: 1.5;
+}
+
+.status-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.status-dot.active {
+  background: #52c41a;
 }
 
 .qr-btn {
-  background: #52c41a;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
-  border: none;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
   border-radius: 50rpx;
-  padding: 20rpx 60rpx;
-  font-size: 30rpx;
-  width: 100%;
-}
-
-/* 排队状态 */
-.queue-card {
-  background: white;
-  border-radius: 16rpx;
-  padding: 30rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
-}
-
-.queue-header {
-  margin-bottom: 20rpx;
-}
-
-.queue-title {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333;
-}
-
-.queue-info {
-  text-align: center;
-  padding: 20rpx;
-  background: #f8f9fa;
-  border-radius: 12rpx;
-}
-
-.venue-name {
-  font-size: 28rpx;
-  color: #333;
-  display: block;
-  margin-bottom: 15rpx;
-}
-
-.position {
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #1890ff;
-  display: block;
-  margin-bottom: 10rpx;
-}
-
-.waiting {
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 24rpx;
-  color: #666;
-  display: block;
+}
+
+.qr-icon {
+  font-size: 32rpx;
   margin-bottom: 8rpx;
 }
 
-.estimate {
-  font-size: 24rpx;
-  color: #52c41a;
-}
-
-/* 日程列表 */
+/* 信息卡片 */
+.info-card,
 .schedule-card {
   background: white;
   border-radius: 16rpx;
   padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
   margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.info-list {
+  margin-bottom: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.info-value {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.copy-btn {
+  background: #f0f8ff;
+  color: #1890ff;
+  border: 2rpx solid #1890ff;
+  border-radius: 50rpx;
+  padding: 16rpx 40rpx;
+  font-size: 28rpx;
+}
+
+/* 考试安排 */
+.schedule-list {
+  space: 20rpx;
+}
+
+.schedule-item {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  margin-bottom: 15rpx;
+  border-left: 6rpx solid #1890ff;
 }
 
 .schedule-header {
-  border-bottom: 1rpx solid #f0f0f0;
-  padding-bottom: 20rpx;
-  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
 }
 
-.schedule-title {
+.schedule-name {
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
 }
 
-.schedule-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15rpx;
+.schedule-status {
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: white;
 }
 
-.schedule-item {
+.schedule-details {
+  space: 12rpx;
+}
+
+.detail-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20rpx;
-  background: #fafafa;
-  border-radius: 12rpx;
-  transition: background-color 0.2s;
+  margin-bottom: 10rpx;
 }
 
-.schedule-item:active {
-  background: #f0f0f0;
-}
-
-.schedule-info {
-  flex: 1;
-}
-
-.exam-name {
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #333;
-  display: block;
-  margin-bottom: 8rpx;
-}
-
-.venue-info {
+.detail-icon {
   font-size: 24rpx;
+  margin-right: 12rpx;
+  width: 32rpx;
+}
+
+.detail-text {
+  font-size: 26rpx;
   color: #666;
-  display: block;
-  margin-bottom: 4rpx;
 }
 
-.time-info {
-  font-size: 24rpx;
+.empty-schedule {
+  text-align: center;
+  padding: 60rpx 0;
   color: #999;
 }
 
-.schedule-status {
-  text-align: right;
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
 }
 
-.status-text {
-  padding: 6rpx 12rpx;
-  border-radius: 8rpx;
-  font-size: 22rpx;
+.empty-text {
+  font-size: 28rpx;
 }
 
-.status-pending {
-  background: #fff7e6;
-  color: #fa8c16;
+/* 工作人员功能 */
+.staff-functions {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
 }
 
-.status-in_progress {
+.function-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.function-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.function-item {
+  text-align: center;
+  padding: 30rpx 20rpx;
+  border-radius: 12rpx;
+  background: #f8f9fa;
+  min-width: 200rpx;
+}
+
+.function-item:active {
   background: #e6f7ff;
-  color: #1890ff;
 }
 
-.status-completed {
-  background: #f6ffed;
-  color: #52c41a;
+.function-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
 }
 
-/* 退出登录 */
-.logout-section {
-  margin-top: 40rpx;
+.function-text {
+  font-size: 28rpx;
+  color: #333;
 }
 
-.logout-btn {
-  background: #ff4d4f;
+/* 未登录状态 */
+.welcome-card {
+  background: linear-gradient(135deg, #1890ff, #40a9ff);
+  border-radius: 16rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
   color: white;
-  border: none;
-  border-radius: 50rpx;
-  padding: 20rpx;
-  font-size: 30rpx;
-  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.welcome-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.welcome-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+}
+
+.welcome-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+.login-options {
+  space: 20rpx;
+}
+
+.login-option {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.login-option.candidate {
+  border-left: 6rpx solid #1890ff;
+}
+
+.login-option.staff {
+  border-left: 6rpx solid #52c41a;
+}
+
+.option-icon {
+  font-size: 64rpx;
+  margin-bottom: 15rpx;
+}
+
+.option-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.option-desc {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 通用功能区域 */
+.common-functions {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.function-list {
+  space: 0;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.function-item:last-child {
+  border-bottom: none;
+}
+
+.function-item:active {
+  background: #f5f5f5;
+}
+
+.function-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  width: 40rpx;
+}
+
+.function-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.function-arrow {
+  font-size: 24rpx;
+  color: #ccc;
 }
 
 /* 二维码弹窗 */
@@ -305,65 +363,95 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.qr-modal-content {
+.qr-content {
   background: white;
   border-radius: 20rpx;
-  padding: 40rpx;
+  padding: 0;
   margin: 40rpx;
   max-width: 600rpx;
-  width: 100%;
+  width: 90%;
 }
 
-.qr-modal-header {
+.qr-header {
+  background: #1890ff;
+  color: white;
+  padding: 30rpx;
+  border-radius: 20rpx 20rpx 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30rpx;
 }
 
-.qr-modal-title {
-  font-size: 32rpx;
+.qr-title {
+  font-size: 36rpx;
   font-weight: bold;
-  color: #333;
 }
 
-.qr-close-btn {
+.qr-close {
+  background: none;
+  color: white;
+  font-size: 48rpx;
+  font-weight: bold;
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-  background: #f0f0f0;
-  color: #666;
-  border: none;
-  font-size: 36rpx;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.qr-code-container {
+.qr-body {
+  padding: 40rpx;
   text-align: center;
-  margin-bottom: 30rpx;
 }
 
-.qr-code-image {
+.qr-image {
   width: 400rpx;
   height: 400rpx;
+  margin: 0 auto 30rpx;
   border: 2rpx solid #f0f0f0;
   border-radius: 12rpx;
 }
 
-.qr-modal-tip {
-  text-align: center;
-  font-size: 24rpx;
+.qr-loading {
+  height: 400rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.loading-text {
   color: #666;
-  display: block;
+  font-size: 28rpx;
+}
+
+.qr-info {
+  space: 20rpx;
+}
+
+.info-text {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.refresh-qr {
+  background: #f0f8ff;
+  color: #1890ff;
+  border: 2rpx solid #1890ff;
+  border-radius: 50rpx;
+  padding: 16rpx 40rpx;
+  font-size: 28rpx;
 }

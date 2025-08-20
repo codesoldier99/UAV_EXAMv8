@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/venues/venues",
     "pages/checkin/checkin",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/candidate-login/candidate-login"
   ],
   "window": {
     "backgroundColor": "#F8F9FA",
